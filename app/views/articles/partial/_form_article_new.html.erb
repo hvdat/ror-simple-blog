@@ -1,0 +1,21 @@
+<div class="relative max-w-4xl mx-auto">
+  <%= form_with model: model do |f| %>
+    <div class="flex-col flex gap-3 mb-2">
+      <div class="flex gap-2 items-start">
+        <%= f.label :title, "Title:", class: "basis-[3rem] mt-3" %>
+        <%= f.text_field :title, placeholder: "Title", autofocus: true, class: "form-input" %>
+      </div>
+
+      <div class="flex gap-2 items-start">
+        <%= f.label :brief, "Brief:", class: "basis-[3rem] mt-3" %>
+        <%= f.text_field :brief, placeholder: "Brief", class: "form-input" %>
+      </div>
+
+      <div class="flex gap-2 items-start">
+        <%= f.label :body, "Body:", class: "basis-[3rem] mt-3" %>
+        <%= f.text_area :body, placeholder: "Content", class: "form-input", rows: 10 %>
+      </div>
+    </div>
+    <%= f.submit 'Create an article', class: "bg-[#0b57cf] hover:bg-[#083d91] text-white rounded-lg py-2 px-4 transition-all cursor-pointer absolute right-0" %>
+  <% end %>
+</div>

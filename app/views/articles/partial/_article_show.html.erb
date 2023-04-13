@@ -1,0 +1,18 @@
+<div class="opacity-70 leading-[1.5em] mt-[8px] mb-[25px]"><%= article.brief %></div>
+<div class="text-[90%] text-[#08102b] flex gap-3 items-center">
+  <div class="flex items-center gap-2">
+    <div class="w-7 h-7 rounded-full overflow-hidden">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6th-oTbkDMbDOPGU_kkRMM55lfvRYgM8JA&usqp=CAU" alt="avatar" class="w-full h-full object-cover">
+    </div>
+
+    <%= link_to user_path(article.user) do %>
+      <% if article.user == current_user %>
+        <span class="uppercase text-[#08102b]">You</span>
+      <% else %>
+        <span class="uppercase text-[#08102b]"><%= @author_name %></span>
+      <% end %>
+    <% end %>
+  </div>
+
+  <span class="text-[90%] opacity-70 ml-2">Update: <%= article.updated_at.strftime("%b %e, %Y") %></span></div>
+<div class="text-justify mt-10 prose"><%= markdown article.body %></div>

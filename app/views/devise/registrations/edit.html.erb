@@ -1,0 +1,42 @@
+<div class="w-full">
+  <div class="w-96 m-auto flex flex-col gap-4">
+    <h2 class="uppercase font-bold text-xl text-center">Update your account</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="flex flex-col gap-5">
+        <div class="field">
+          <%= f.label :email, "Email:" %><br/>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:
+            "form-input" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :password, "New password:" %>
+          <br><i class="text-sm">(leave blank if you don't want to change it)</i><br/>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation, "New password confirmation:" %><br/>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :current_password, "Current pasword:" %>
+          <br><i class="text-sm">(current password to confirm your changes)</i><br/>
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-input" %>
+        </div>
+
+        <div class="actions"><%= f.submit "Update", class: "text-white py-4 bg-[#0b57cf] hover:bg-[#083d91] transition-all w-full hover:cursor-pointer rounded-xl" %></div>
+      </div>
+    <% end %>
+    <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "text-sm inline-block text-red-700" %>
+    <div class="text-right">
+      <%= link_to "Back", :back, class: "text-[#0b57cf] hover:text-[#083d91] transition-all" %>
+    </div>
+  </div>
+</div>

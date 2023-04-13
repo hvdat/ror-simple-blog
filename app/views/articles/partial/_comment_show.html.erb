@@ -1,0 +1,14 @@
+<div class="mt-5">
+  <div class="flex gap-2">
+    <div class="w-10 h-10 rounded-full overflow-hidden">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6th-oTbkDMbDOPGU_kkRMM55lfvRYgM8JA&usqp=CAU" alt="avatar" class="w-full h-full object-cover">
+    </div>
+    <div class="flex flex-col">
+      <div class="flex gap-3 items-center">
+        <div class="text-[#08102b]"><%= comment.user.email.split('@').first %></div>
+        <div class="text-[90%] opacity-80"><%= comment.created_at.strftime("%B %d, %Y at %I:%M %p") %></div>
+      </div>
+      <div class="text-justify text-[0.875rem] opacity-80"><%= comment.body %></div>
+    </div>
+  </div>
+</div>

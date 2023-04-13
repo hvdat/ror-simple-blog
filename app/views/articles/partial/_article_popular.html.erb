@@ -1,0 +1,21 @@
+<article class="mt-6">
+  <div class="opacity-80 text-[0.8125rem] ml-6 mb-2">
+    <%= article.updated_at.strftime("%b %e") %>
+  </div>
+
+  <div class="flex gap-2">
+    <div class="text-[0.9065rem] tracking-tighter opacity-50">
+      <%= sprintf("%02d", index + 1) %>
+    </div>
+    <div class="relative">
+      <h2 class="text-[#08102B] font-bold text-[0.95rem] line-clamp-2 hover:text-[#0b57cf] transition-all">
+        <%= link_to article.title, user_article_path(article.user, article) %>
+      </h2>
+      <div
+        class="text-[#08102B] line-clamp-2 opacity-80 mt-3 text-[0.875rem]"
+      >
+        <%= markdown article.body, true %>
+      </div>
+    </div>
+  </div>
+</article>

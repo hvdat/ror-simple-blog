@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
+@layer base {
+    body {
+        background-color: #fffdfc;
+    }
+}
+
+.section-title {
+    @apply mb-5 text-[0.9375rem] after:content-[''] after:inline-block after:w-7 after:border-[#989b9f] after:border-b-[1px] after:align-middle after:mx-[10px] after:opacity-50 text-center md:text-left;
+}
+
+.form-input {
+    @apply mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0;
+}

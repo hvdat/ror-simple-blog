@@ -1,0 +1,56 @@
+<header
+  class="h-16 px-5 flex justify-between items-center bg-[#fffdfc] border-b-[1px] border-[#e6e6e6]"
+>
+  <%= link_to "Dat's Blog", root_path %>
+  <div class="hidden md:block mr-auto ml-10 relative">
+    <div
+      class="text-xl text-gray-500 absolute w-[42px] h-full flex items-center justify-center"
+    >
+      <i class="ri-search-line"></i>
+    </div>
+    <input
+      type="text"
+      class="bg-transparent border-transparent focus:border-transparent focus:ring-0 rounded-xl py-2 px-10 w-96 focus:bg-[rgba(0,0,0,0.05)] hover:bg-[rgba(0,0,0,0.05)] text-[0.8125rem] transition"
+      placeholder="Try 'React'"
+      />
+  </div>
+  <nav class="flex text-gray-500">
+    <div
+      class="hover:bg-[rgba(0,0,0,0.05)] w-10 h-10 rounded-2xl flex justify-center items-center md:hidden transition text-xl"
+    >
+      <i class="ri-search-line"></i>
+    </div>
+    <% if user_signed_in? %>
+      <div class="flex items-center gap-2">
+        <div>
+          Welcome,
+          <%= link_to "#{current_user.email.split('@').first}", user_path(current_user), class: "hover:text-[#083d91] transition-all" %>
+        </div>
+        <div class="hover:bg-[rgba(0,0,0,0.05)] px-4 py-2 rounded-2xl flex justify-center items-center transition hover:text-[#08102b]">
+          <%= link_to "Create Article", new_user_article_path(current_user) %>
+        </div>
+        <div
+          class="hover:bg-[rgba(0,0,0,0.05)] px-4 py-2 rounded-2xl flex justify-center items-center transition hover:text-[#08102b]"
+        >
+          <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+        </div>
+      </div>
+
+    <% else %>
+      <div class="flex">
+        <div
+          class="hover:bg-[rgba(0,0,0,0.05)] px-4 py-2 rounded-2xl flex justify-center items-center transition hover:text-[#08102b]"
+        >
+          <%= link_to "Log in", new_user_session_path %>
+        </div>
+
+        <div
+          class="hover:bg-[rgba(0,0,0,0.05)] px-4 py-2 rounded-2xl flex justify-center items-center transition hover:text-[#08102b]"
+        >
+          <%= link_to "Sign up", new_user_registration_path %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </nav>
+</header>

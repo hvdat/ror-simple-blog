@@ -1,0 +1,7 @@
+<h3 class="section-title mt-10">Comments:</h3>
+<% if user_signed_in? %>
+  <%= render "articles/partial/form_comment", model: model %>
+<% else %>
+  <p class="text-center text-[0.875rem] opacity-80"><%= link_to "Login", new_user_session_path, class: "text-[#0b57cf]" %>
+    to add a comment</p>
+<% end %>

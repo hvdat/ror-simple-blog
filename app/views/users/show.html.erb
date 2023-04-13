@@ -1,0 +1,35 @@
+<div class="grid grid-cols-4 gap-x-2">
+  <div class="w-max-full h-full rounded-xl p-4 bg-gray-100">
+    <div class="w-24 h-24 rounded-full overflow-hidden mx-auto mt-12">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6th-oTbkDMbDOPGU_kkRMM55lfvRYgM8JA&usqp=CAU" alt="avatar" class="w-full h-full object-cover">
+    </div>
+    <div class="text-center mt-4">
+      <h1 class="text-xl font-[500]"><%= @user.email.split('@').first %></h1>
+      <p class="text-gray-500">Platinum</p>
+    </div>
+  </div>
+
+  <div class="w-max-full h-full rounded-xl p-4 col-span-3 bg-gray-100">
+    <div class="relative">
+      <h1 class="text-center font-[500] text-2xl mb-4">User Profile</h1>
+
+    </div>
+
+    <div>
+      <div class="text-sm uppercase font-bold opacity-50">Email:</div>
+      <div><%= @user.email %></div>
+    </div>
+
+    <div class="mt-5">
+      <div class="text-sm uppercase font-bold opacity-50">Contributed articles:</div>
+      <%= link_to "#{@user.articles.size} article(s)", user_articles_path(@user), class: "text-[#0b57cf] hover:text-[#083d91] transition-all" %>
+    </div>
+
+    <% if current_user === @user %>
+      <div class="mt-5">
+        <div class="text-sm uppercase font-bold opacity-50">Account:</div>
+        <%= link_to "Change you password", edit_user_registration_path, class: "text-[#0b57cf] hover:text-[#083d91] transition-all" %>
+      </div>
+    <% end %>
+  </div>
+</div>

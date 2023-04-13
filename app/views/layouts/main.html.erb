@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= favicon_link_tag "favicon-32x32" %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700;900&display=swap"
+    rel="stylesheet"
+    />
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+<%= render "shared/header" %>
+<main class="mt-5 px-[10px] py-5 container mx-auto">
+  <div class="w-full lg:grid lg:grid-cols-3 lg:gap-x-6">
+    <div class="col-span-2 mb-16">
+      <%= yield :main %>
+    </div>
+
+    <div>
+      <%= yield :sidebar %>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<article class="pb-[2.1875rem] relative">
+  <div class="mb-5 overflow-hidden min-h-[200px] bg-gray-200">
+  </div>
+  <h2 class="text-[#08102B] font-bold hover:text-[#0b57cf] line-clamp-2">
+    <%= link_to article.title, user_article_path(article.user, article) %>
+  </h2>
+
+  <div class="text-[#08102B] line-clamp-2 opacity-80 mt-3 text-[0.875rem]">
+    <%= markdown article.body, true %>
+  </div>
+
+  <div
+    class="absolute bottom-0 right-0 left-0 mt-4 opacity-80 text-[0.8125rem] flex justify-between"
+  >
+    <%= article.updated_at.strftime("%b %e, %Y") %>
+  </div>
+</article>

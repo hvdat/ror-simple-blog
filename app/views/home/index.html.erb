@@ -1,0 +1,32 @@
+<% content_for :title, @title %>
+
+<% content_for :main do %>
+  <h3 class="section-title">Latest</h3>
+  <!--  ARTICLES LIST-->
+
+  <% if @articles.length > 0 %>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-2.5 gap-y-10">
+      <% @articles.each do |article| %>
+        <%= render "articles/partial/article_entry", article: article %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <p class="text-gray-500">No articles found</p>
+    </div>
+  <% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <h3 class="section-title">Popular</h3>
+  <!--    POPULAR ARTICLES LIST-->
+  <% if @articles_popular.length > 0 %>
+    <% @articles_popular.each_with_index do |article, index| %>
+      <%= render "articles/partial/article_popular", article: article, index: index %>
+    <% end %>
+  <% else %>
+    <div class="text-center">
+      <p class="text-gray-500">No articles found</p>
+    </div>
+  <% end %>
+<% end %>

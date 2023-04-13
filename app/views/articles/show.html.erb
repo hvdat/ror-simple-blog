@@ -1,0 +1,33 @@
+<% content_for :title, @article.title %>
+
+<% content_for :main do %>
+
+  <!--  SHOW ARTICLE SECTION-->
+  <div class="text-[2.25rem] flex gap-2 font-[500]">
+    <h1>
+      <%= @article.title %>
+      <% if author?(@article) %>
+        <%= link_to edit_user_article_path(@article) do %>
+          <span class="transition-all hover:text-[#0b57cf]"><i class="ri-edit-2-line"></i></span>
+        <% end %>
+      <% end %>
+    </h1>
+  </div>
+  <%= render "articles/partial/article_show", article: @article %>
+
+  <!--  COMMENT SECTION-->
+  <%= render "articles/partial/comment_add", model: [current_user, @article, @article.comments.build] %>
+  <% @article.comments.each do |c| %>
+    <% unless c.body.nil? %>
+      <%= render "articles/partial/comment_show", comment: c %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <h3 class="section-title">Popular</h3>
+  <!--  POPULAR ARTICLES LIST-->
+  <% @articles_popular.each_with_index do |article, index| %>
+    <%= render "articles/partial/article_popular", article: article, index: index %>
+  <% end %>
+<% end %>
